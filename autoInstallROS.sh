@@ -24,7 +24,7 @@ function installRos()
 	while [ $? -ne 0 ]
 	do
 		echo "add key failure!!, try again... /n"
-		sleep 3
+		sleep 10
 		sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
 	done
 	sudo apt update
@@ -40,12 +40,25 @@ function installRos()
 	while [ $? -ne 0 ]
 	do
 		echo -e "rosdep update failure, try again... /n"
-		sleep 3
+		sleep 10
 		rosdep update
 	done
     echo "#config ros system env" >> ~/.bashrc
 	echo "source /opt/ros/$ROSdistro/setup.bash" >> ~/.bashrc
 	source ~/.bashrc
+	sudo apt-get install -y ros-$ROSdistro-sophus
+	sudo apt-get install -y ros-$ROSdistro-octomap
+	sudo apt-get install -y ros-$ROSdistro-ompl
+	
+	sudo apt-get install -y ros-$ROSdistro-moveit-commander ros-$ROSdistro-moveit-experimental ros-$ROSdistro-moveit-kinematics ros-$ROSdistro-moveit-planners
+	sudo apt-get install -y ros-$ROSdistro-moveit-ros ros-$ROSdistro-moveit-plugins ros-$ROSdistro-moveit-setup-assistant ros-$ROSdistro-moveit-runtime
+	while [ $? -ne 0 ]
+	do
+		echo "Install moveit failure!!, try again... /n"
+		sleep 10
+		sudo apt-get install -y ros-$ROSdistro-moveit-commander ros-$ROSdistro-moveit-experimental ros-$ROSdistro-moveit-kinematics ros-$ROSdistro-moveit-planners
+		sudo apt-get install -y ros-$ROSdistro-moveit-ros ros-$ROSdistro-moveit-plugins ros-$ROSdistro-moveit-setup-assistant ros-$ROSdistro-moveit-runtime
+	done
 	sudo apt-get install -y  python-rosinstall python-rosinstall-generator python-wstool build-essential
 	echo -e "Install ROS sucessfully! \n"
 	return 0

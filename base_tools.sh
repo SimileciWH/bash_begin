@@ -11,13 +11,16 @@
 #   Description : code is far away from bugs with the god animal protecting
 #
 #================================================================
-rm ~/.bashrc
-rm ~/.vimrc
-
 sudo apt-get update 
-sudo apt-get install -y  vim git tmux okular kmplayer openconnect gdebi-core net-tools loacte
+sudo apt-get install -y okular kmplayer gdebi-core
+sudo apt-get install -y vim git tmux
+sudo apt-get install -y net-tools loacte
+sudo apt-get install -y openconnect
 
-
+#install vim
+cp -r ~/Downloads/myUbuntu1804Backup/config_files ~
+mkdir -p ~/.vim/bundle
+cp -r ~/config_files/Vundle.vim ~/.vim/bundle
 # vpn configure
 sudo mkdir /etc/vpnc 
 cd /etc/vpnc 
@@ -25,13 +28,19 @@ sudo wget http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/HEAD:
 sudo chmod +x vpnc-script
 
 # download vimrc tmux.conf bashrc
-cd /tmp 
+cd ~
 git clone https://github.com/SimileciWH/simileciWH_vimrc_tmux_bashrc_config.git 
+while [ $? -ne 0 ]
+do
+	echo -e "download failure,try again... \n"
+	sleep 10
+	git clone https://github.com/SimileciWH/simileciWH_vimrc_tmux_bashrc_config.git 
+done
 sudo mv simileciWH_vimrc_tmux_bashrc_config/.bashrc ~
 sudo mv simileciWH_vimrc_tmux_bashrc_config/.vimrc ~
 sudo mv simileciWH_vimrc_tmux_bashrc_config/.tmux.conf ~
 
-sudo rm -rf /tmp/simileciWH*
+sudo rm -rf ~/simileciWH*
 
 #install chrome
 echo -e "Install chrome!!! \n"
