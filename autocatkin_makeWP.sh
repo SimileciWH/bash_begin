@@ -18,17 +18,17 @@ sudo apt-get install -y python-wstool python-rosdep ninja-build
 cd ~/catkin_ws
 catkin_make 
 source ~/catkin_ws/devel/setup.bash
-read -p "press any key to continue..."
+#read -p "press any key to continue..."
 
 cd ~/catkin_new 
 catkin_make 
 source ~/catkin_new/devel/setup.bash
-read -p "press any key to continue..."
+#read -p "press any key to continue..."
 
 cd ~/ROS_Library/cartographer 
 rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
 catkin_make_isolated --install --use-ninja 
 
-read -p "press any key to continue..."
+#read -p "press any key to continue..."
 
 echo "catkin_new and catkin_ws cartographer are all finish...."

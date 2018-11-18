@@ -37,7 +37,7 @@ make check
 sudo make install 
 echo -e "install libusb finish!!! \n"
 
-read -p "input soething to continue..." breakpoint
+#read -p "input soething to continue..." breakpoint
 
 echo -e "install cwiid lib \n"
 cd ~/ROS_Library/cwiid-master
@@ -46,7 +46,7 @@ sudo make
 sudo make install
 echo -e "install cwiid lib finish!!! \n"
 
-read -p "input soething to continue..." breakpoint
+#read -p "input soething to continue..." breakpoint
 
 echo -e "install eigen lib \n"
 cd ~/ROS_Library/eigen
@@ -56,7 +56,7 @@ cmake ..
 sudo make install 
 echo -e "install eigen finish!!! \n"
 
-read -p "input soething to continue..." breakpoint
+#read -p "input soething to continue..." breakpoint
 
 echo -e "install fcl lib \n"
 cd ~/ROS_Library/fcl_0.5.0.orig/fcl-0.5.0/
@@ -67,7 +67,7 @@ make -j4
 sudo make install 
 echo -e "install fcl finish!!! \n"
 
-read -p "input soething to continue..." breakpoint
+#read -p "input soething to continue..." breakpoint
 
 echo -e "install libfreenect lib \n"
 cd ~/ROS_Library/libfreenect-ros-devel/
@@ -79,7 +79,7 @@ make
 sudo make install 
 echo -e "install libfreenect lib finish!!! \n"
 
-read -p "input soething to continue..." breakpoint
+#read -p "input soething to continue..." breakpoint
 
 echo -e "install powerline fonts \n"
 cd ~/ROS_Library/fonts-master 
