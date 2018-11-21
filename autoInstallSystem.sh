@@ -18,12 +18,6 @@ cd ~/Downloads/myUbuntu1804Backup
 ./autoInstallROS.sh  
 ./installaria2.sh 
 ./installROS_library.sh 
-
-read -p "check is there errors happend!!!" breakpoint
-
 ./autocatkin_makeWP.sh 
-
-read -p "check is there errors happend!!!" breakpoint
-
 ./autoinstallPowerline.sh
 echo -e "Please configure powerline in bashrc vimrc and tmux.conf \n"

@@ -12,7 +12,7 @@
 #
 #================================================================
 
-var1=123  #this is error: var1 = 123, there is no blank
+export var=123  #this is error: var1 = 123, there is no blank
 echo "$var1"
 echo "${var1}"
 printf "var1 value is: %d\n" ${var1}
