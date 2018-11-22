@@ -16,8 +16,16 @@ sudo apt-get update
 sudo apt-get install -y make
 
 cd ~/Downloads/myUbuntu1804Backup/systemBeautiful 
-cp -r .themes ~
-cp -r .icons ~
+if [ -d ~/.themes ]; then
+	echo "'$HOME/.themes' is exist no need to copy..."
+else
+	cp -r .themes ~
+fi
+if [ -d ~/.icons ]; then 
+	echo "'$HOME/.icons' is exist no need to copy..."
+else 
+	cp -r .icons ~
+fi
 #install dash to dock
 cd dashtodock/
 sudo make

@@ -14,7 +14,11 @@
 #set -x
 #set -n 
 ROSdistro=""
-echo -e "Input ROS version :  melodic || kinetic || jade || indigo? \n"
+echo "-------------------------------------------------------------------------"
+echo "Input ROS version, which is match your system? :"
+echo "ubuntu18.04&18.10----chose melodic || ubuntu16.04&16.10----chose kinetic"
+echo "ubuntu14.04&14.10----chose jade || ubuntu12.04&12.10----chose indigo "
+echo "-------------------------------------------------------------------------"
 read ROSdistro
 function installRos()
 {
@@ -43,8 +47,12 @@ function installRos()
 		sleep 10
 		rosdep update
 	done
-    echo "#config ros system env" >> ~/.bashrc
-	echo "source /opt/ros/$ROSdistro/setup.bash" >> ~/.bashrc
+	if [ $USER = simileciwh ]; then
+		echo ".bashrc has been configure already!"
+	else
+		echo "#config ros system env" >> ~/.bashrc
+		echo "source /opt/ros/$ROSdistro/setup.bash" >> ~/.bashrc
+	fi
 	source ~/.bashrc
 	sudo apt-get install -y ros-$ROSdistro-sophus
 	sudo apt-get install -y ros-$ROSdistro-octomap
@@ -63,4 +71,12 @@ function installRos()
 	echo -e "Install ROS sucessfully! \n"
 	return 0
 }
-installRos
+if [ $ROS_DISTRO = $ROSdistro ]; then 
+	echo "-------------------------------------------------"
+	echo "  ROS-$ROSdistro has been installed already!!!"
+	echo "  Now exit autoInstallROS,sh file..."
+	echo "-------------------------------------------------"
+	sleep 6
+else
+	installRos
+fi
