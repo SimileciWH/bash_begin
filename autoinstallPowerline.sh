@@ -40,6 +40,10 @@ else
 	sudo fc-cache -vf /usr/share/fonts/ 
 	sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 	pip3 show powerline-status
-	echo -e "Powerline has been installed sucessfully!!! \n"
+	if [ $? -eq 0 ]; then 
+		echo -e "Powerline has been installed sucessfully!!! \n"
+	else 
+		echo "Powerline has not been installed correctly, please check Err!!!"
+	fi
 	sleep 6
 fi

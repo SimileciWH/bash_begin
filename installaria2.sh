@@ -16,7 +16,6 @@
 echo "start to install aria2c..."
 sudo apt-get update
 sudo apt-get install -y aria2
-sudo aria2c --conf-path=/etc/aria2/aria2.conf -D
 if [ -d /etc/aria2 ]; then 
 	echo "aria2 has been configure already!!!"
 else
@@ -25,4 +24,9 @@ else
 	sudo chmod 777 /etc/aria2/aria2.session 
 	sudo cp ~/Downloads/myUbuntu1804Backup/aria2/aria2.conf /etc/aria2/
 fi
-echo -e "Aria2 has been installed sucessfully!!! \n"
+sudo aria2c --conf-path=/etc/aria2/aria2.conf -D
+if [ $? -eq 0]; then
+    echo "Aria2 has been installed sucessfully!!! \n"
+else
+    echo "Aria2 configure is failure!"
+fi
