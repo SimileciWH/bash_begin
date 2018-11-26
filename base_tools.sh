@@ -94,3 +94,21 @@ else
 	./qtcreator-ros-xenial-latest-offline-installer.run
 	echo -e "Install qtcreator-ros sucessfully!!! \n"
 fi
+
+#installed typora
+wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+while [ $? -ne 0 ]
+do 
+	echo "add typora key failure, try again..."
+	sleep 6
+	wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+done 
+sudo add-apt-repository 'deb https://typora.io/linux ./'
+sudo apt-get update
+sudo apt-get install typora
+while [ $? -ne 0 ]
+do
+	echo "typora install failure, try again..."
+	sleep 6
+	sudo apt-get install typora
+done 
