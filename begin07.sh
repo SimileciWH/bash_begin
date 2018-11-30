@@ -34,4 +34,5 @@ fi
 
 test 5 > 2 && echo Yes
 test 5 < 2 && echo No || echo Yes
+test 5 < 2 || echo Yes
 test 5 -lt 2 && echo Yes || echo No
